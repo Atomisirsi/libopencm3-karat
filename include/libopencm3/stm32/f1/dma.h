@@ -719,5 +719,17 @@ void dma_disable_channel(u32 dma, u8 channel);
 void dma_set_peripheral_address(u32 dma, u8 channel, u32 address);
 void dma_set_memory_address(u32 dma, u8 channel, u32 address);
 void dma_set_number_of_data(u32 dma, u8 channel, u16 number);
+void dma_disable_mem2mem_mode(u32 dma, u8 channel);
+void dma_disable_memory_increment_mode(u32 dma, u8 channel);
+void dma_disable_peripheral_increment_mode(u32 dma, u8 channel);
+void dma_disable_circular_mode(u32 dma, u8 channel);
+void dma_clear_transfer_complete_flag(u32 dma, u8 channel);
+void dma_clear_half_transfer_flag(u32 dma, u8 channel);
+void dma_clear_transfer_error_flag(u32 dma, u8 channel);
+void dma_clear_all_flags(u32 dma, u8 channel);
+u32 dma_get_transfer_complete_flag(u32 dma, u8 channel);
+u32 dma_get_half_transfer_flag(u32 dma, u8 channel);
+u32 dma_get_transfer_error_flag(u32 dma, u8 channel);
+u8 dma_get_irqn(u32 dma, u8 channel);
 
 #endif

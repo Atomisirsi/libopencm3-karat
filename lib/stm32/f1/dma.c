@@ -654,3 +654,407 @@ void dma_set_number_of_data(u32 dma, u8 channel, u16 number)
 		break;
 	}
 }
+
+void dma_disable_mem2mem_mode(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_CCR1(dma) &= ~DMA_CCR1_MEM2MEM;
+		break;
+
+	case 2:
+		DMA_CCR2(dma) &= ~DMA_CCR2_MEM2MEM;
+		break;
+
+	case 3:
+		DMA_CCR3(dma) &= ~DMA_CCR3_MEM2MEM;
+		break;
+
+	case 4:
+		DMA_CCR4(dma) &= ~DMA_CCR4_MEM2MEM;
+		break;
+
+	case 5:
+		DMA_CCR5(dma) &= ~DMA_CCR5_MEM2MEM;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_CCR6(dma) &= ~DMA_CCR6_MEM2MEM;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_CCR7(dma) &= ~DMA_CCR7_MEM2MEM;
+		break;
+	}
+}
+ 
+void dma_disable_memory_increment_mode(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_CCR1(dma) &= ~DMA_CCR1_MINC;
+		break;
+
+	case 2:
+		DMA_CCR2(dma) &= ~DMA_CCR2_MINC;
+		break;
+
+	case 3:
+		DMA_CCR3(dma) &= ~DMA_CCR3_MINC;
+		break;
+
+	case 4:
+		DMA_CCR4(dma) &= ~DMA_CCR4_MINC;
+		break;
+
+	case 5:
+		DMA_CCR5(dma) &= ~DMA_CCR5_MINC;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_CCR6(dma) &= ~DMA_CCR6_MINC;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_CCR7(dma) &= ~DMA_CCR7_MINC;
+		break;
+	}
+}
+ 
+void dma_disable_peripheral_increment_mode(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_CCR1(dma) &= ~DMA_CCR1_PINC;
+		break;
+
+	case 2:
+		DMA_CCR2(dma) &= ~DMA_CCR2_PINC;
+		break;
+
+	case 3:
+		DMA_CCR3(dma) &= ~DMA_CCR3_PINC;
+		break;
+
+	case 4:
+		DMA_CCR4(dma) &= ~DMA_CCR4_PINC;
+		break;
+
+	case 5:
+		DMA_CCR5(dma) &= ~DMA_CCR5_PINC;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_CCR6(dma) &= ~DMA_CCR6_PINC;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_CCR7(dma) &= ~DMA_CCR7_PINC;
+		break;
+	}
+}
+
+void dma_disable_circular_mode(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_CCR1(dma) &= ~DMA_CCR1_CIRC;
+		break;
+
+	case 2:
+		DMA_CCR2(dma) &= ~DMA_CCR2_CIRC;
+		break;
+
+	case 3:
+		DMA_CCR3(dma) &= ~DMA_CCR3_CIRC;
+		break;
+
+	case 4:
+		DMA_CCR4(dma) &= ~DMA_CCR4_CIRC;
+		break;
+
+	case 5:
+		DMA_CCR5(dma) &= ~DMA_CCR5_CIRC;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_CCR6(dma) &= ~DMA_CCR6_CIRC;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_CCR7(dma) &= ~DMA_CCR7_CIRC;
+		break;
+	}
+}
+
+
+void dma_clear_transfer_complete_flag(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_IFCR(dma) = DMA_IFCR_CTCIF1;
+		break;
+
+	case 2:
+		DMA_IFCR(dma) = DMA_IFCR_CTCIF2;
+		break;
+
+	case 3:
+		DMA_IFCR(dma) = DMA_IFCR_CTCIF3;
+		break;
+
+	case 4:
+		DMA_IFCR(dma) = DMA_IFCR_CTCIF4;
+		break;
+
+	case 5:
+		DMA_IFCR(dma) = DMA_IFCR_CTCIF5;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CTCIF6;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CTCIF7;
+		break;
+	}
+}
+
+void dma_clear_half_transfer_flag(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_IFCR(dma) = DMA_IFCR_CHTIF1;
+		break;
+
+	case 2:
+		DMA_IFCR(dma) = DMA_IFCR_CHTIF2;
+		break;
+
+	case 3:
+		DMA_IFCR(dma) = DMA_IFCR_CHTIF3;
+		break;
+
+	case 4:
+		DMA_IFCR(dma) = DMA_IFCR_CHTIF4;
+		break;
+	case 5:
+		DMA_IFCR(dma) = DMA_IFCR_CHTIF5;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CHTIF6;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CHTIF7;
+		break;
+	}
+}
+
+void dma_clear_transfer_error_flag(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_IFCR(dma) = DMA_IFCR_CTEIF1;
+		break;
+
+	case 2:
+		DMA_IFCR(dma) = DMA_IFCR_CTEIF2;
+		break;
+
+	case 3:
+		DMA_IFCR(dma) = DMA_IFCR_CTEIF3;
+		break;
+
+	case 4:
+		DMA_IFCR(dma) = DMA_IFCR_CTEIF4;
+		break;
+
+	case 5:
+		DMA_IFCR(dma) = DMA_IFCR_CTEIF5;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CTEIF6;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CTEIF7;
+		break;
+	}
+}
+
+void dma_clear_all_flags(u32 dma, u8 channel)
+{
+	switch (channel)
+	{
+	case 1:
+		DMA_IFCR(dma) = DMA_IFCR_CGIF1;
+		break;
+
+	case 2:
+		DMA_IFCR(dma) = DMA_IFCR_CGIF2;
+		break;
+
+	case 3:
+		DMA_IFCR(dma) = DMA_IFCR_CGIF3;
+		break;
+
+	case 4:
+		DMA_IFCR(dma) = DMA_IFCR_CGIF4;
+		break;
+
+	case 5:
+		DMA_IFCR(dma) = DMA_IFCR_CGIF5;
+		break;
+
+	case 6:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CGIF6;
+		break;
+
+	case 7:
+		if (dma == DMA1) DMA_IFCR(dma) = DMA_IFCR_CGIF7;
+		break;
+	}
+}
+
+u32 dma_get_transfer_complete_flag(u32 dma, u8 channel)
+{
+	u32 reg = 0;
+
+	switch (channel)
+	{
+	case 1:
+		reg = DMA_ISR(dma) & DMA_ISR_TCIF1;
+		break;
+
+	case 2:
+		reg = DMA_ISR(dma) & DMA_ISR_TCIF2;
+		break;
+
+	case 3:
+		reg = DMA_ISR(dma) & DMA_ISR_TCIF3;
+		break;
+
+	case 4:
+		reg = DMA_ISR(dma) & DMA_ISR_TCIF4;
+		break;
+
+	case 5:
+		reg = DMA_ISR(dma) & DMA_ISR_TCIF5;
+		break;
+
+	case 6:
+		if (dma == DMA1) reg = DMA_ISR(dma) & DMA_ISR_TCIF6;
+		break;
+
+	case 7:
+		if (dma == DMA1) reg = DMA_ISR(dma) & DMA_ISR_TCIF7;
+		break;
+	}
+
+	return reg;
+}
+
+u32 dma_get_half_transfer_flag(u32 dma, u8 channel)
+{
+	u32 reg = 0;
+
+	switch (channel)
+	{
+	case 1:
+		reg = DMA_ISR(dma) & DMA_ISR_HTIF1;
+		break;
+
+	case 2:
+		reg = DMA_ISR(dma) & DMA_ISR_HTIF2;
+		break;
+
+	case 3:
+		reg = DMA_ISR(dma) & DMA_ISR_HTIF3;
+		break;
+
+	case 4:
+		reg = DMA_ISR(dma) & DMA_ISR_HTIF4;
+		break;
+
+	case 5:
+		reg = DMA_ISR(dma) & DMA_ISR_HTIF5;
+		break;
+
+	case 6:
+		if (dma == DMA1) reg = DMA_ISR(dma) & DMA_ISR_HTIF6;
+		break;
+
+	case 7:
+		if (dma == DMA1) reg = DMA_ISR(dma) & DMA_ISR_HTIF7;
+		break;
+	}
+
+	return reg;
+}
+
+u32 dma_get_transfer_error_flag(u32 dma, u8 channel)
+{
+	u32 reg = 0;
+
+	switch (channel)
+	{
+	case 1:
+		reg = DMA_ISR(dma) & DMA_ISR_TEIF1;
+		break;
+
+	case 2:
+		reg = DMA_ISR(dma) & DMA_ISR_TEIF2;
+		break;
+
+	case 3:
+		reg = DMA_ISR(dma) & DMA_ISR_TEIF3;
+		break;
+
+	case 4:
+		reg = DMA_ISR(dma) & DMA_ISR_TEIF4;
+		break;
+
+	case 5:
+		reg = DMA_ISR(dma) & DMA_ISR_TEIF5;
+		break;
+
+	case 6:
+		if (dma == DMA1) reg = DMA_ISR(dma) & DMA_ISR_TEIF6;
+		break;
+
+	case 7:
+		if (dma == DMA1) reg = DMA_ISR(dma) & DMA_ISR_TEIF7;
+		break;
+	}
+
+	return reg;
+}
+
+u8 dma_get_irqn(u32 dma, u8 channel)
+{
+	u8 irqn = 255;
+
+	if (dma == DMA1)
+	{
+		if ((channel > 0) && (channel <= 7))
+			irqn = 10 + channel;
+	}
+	if (dma == DMA2)
+	{
+		if ((channel > 0) && (channel <= 5))
+			irqn = 55 + channel;
+	}
+
+	return irqn;
+}
